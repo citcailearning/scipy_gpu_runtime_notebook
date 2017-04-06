@@ -20,7 +20,8 @@ ENV CUDA_VERSION 8.0.61
 LABEL com.nvidia.cuda.version="${CUDA_VERSION}"
 
 ENV CUDA_PKG_VERSION 8-0=$CUDA_VERSION-1
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get clean && \
+    apt-get update && apt-get install -y --no-install-recommends \
         cuda-nvrtc-$CUDA_PKG_VERSION \
         cuda-nvgraph-$CUDA_PKG_VERSION \
         cuda-cusolver-$CUDA_PKG_VERSION \
