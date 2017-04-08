@@ -30,7 +30,21 @@ RUN apt-get clean && \
         cuda-curand-$CUDA_PKG_VERSION \
         cuda-cusparse-$CUDA_PKG_VERSION \
         cuda-npp-$CUDA_PKG_VERSION \
-        cuda-cudart-$CUDA_PKG_VERSION && \
+        cuda-cudart-$CUDA_PKG_VERSION \
+        cuda-core-$CUDA_PKG_VERSION \
+        cuda-misc-headers-$CUDA_PKG_VERSION \
+        cuda-command-line-tools-$CUDA_PKG_VERSION \
+        cuda-nvrtc-dev-$CUDA_PKG_VERSION \
+        cuda-nvml-dev-$CUDA_PKG_VERSION \
+        cuda-nvgraph-dev-$CUDA_PKG_VERSION \
+        cuda-cusolver-dev-$CUDA_PKG_VERSION \
+        cuda-cublas-dev-$CUDA_PKG_VERSION \
+        cuda-cufft-dev-$CUDA_PKG_VERSION \
+        cuda-curand-dev-$CUDA_PKG_VERSION \
+        cuda-cusparse-dev-$CUDA_PKG_VERSION \
+        cuda-npp-dev-$CUDA_PKG_VERSION \
+        cuda-cudart-dev-$CUDA_PKG_VERSION \
+        cuda-driver-dev-$CUDA_PKG_VERSION && \
     ln -s cuda-8.0 /usr/local/cuda && \
     rm -rf /var/lib/apt/lists/*
 
@@ -41,6 +55,6 @@ RUN echo "/usr/local/nvidia/lib" >> /etc/ld.so.conf.d/nvidia.conf && \
 
 ENV PATH /usr/local/nvidia/bin:/usr/local/cuda/bin:${PATH}
 ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
-
+ENV LIBRARY_PATH /usr/local/cuda/lib64/stubs:${LIBRARY_PATH}
 
 USER $NB_USER
